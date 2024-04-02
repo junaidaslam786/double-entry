@@ -1,11 +1,11 @@
 import sys
 import os
-import flet as ft
+import tkinter as tk
 
 # Add the project root to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from src.ui.app_ui import main as ui_main
+from src.ui.app_ui import DashboardApp
 from src.database.database import Database
 from src.database.create_tables import create_tables
 from src.config import db_config
@@ -26,7 +26,9 @@ def main():
         return
 
     # Launch the UI of the application
-    ft.app(target=ui_main)
+    root = tk.Tk()
+    app = DashboardApp(root, db)
+    root.mainloop()
 
 if __name__ == "__main__":
     main()
